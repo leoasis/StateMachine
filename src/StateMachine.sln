@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachine", "StateMachine\StateMachine.csproj", "{F19F80E3-1387-4D97-A740-C9B769DF446B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachine.Tests", "StateMachine.Tests\StateMachine.Tests.csproj", "{FE60D1EB-CBCA-4016-9DFC-3F0D5E0D62F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F19F80E3-1387-4D97-A740-C9B769DF446B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F19F80E3-1387-4D97-A740-C9B769DF446B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F19F80E3-1387-4D97-A740-C9B769DF446B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F19F80E3-1387-4D97-A740-C9B769DF446B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE60D1EB-CBCA-4016-9DFC-3F0D5E0D62F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE60D1EB-CBCA-4016-9DFC-3F0D5E0D62F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE60D1EB-CBCA-4016-9DFC-3F0D5E0D62F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE60D1EB-CBCA-4016-9DFC-3F0D5E0D62F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
