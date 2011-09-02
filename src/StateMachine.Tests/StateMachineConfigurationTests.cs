@@ -8,7 +8,7 @@ namespace StateMachine.Tests
         [Test]
         public void api_concept()
         {
-            
+
         }
 
 
@@ -30,7 +30,37 @@ namespace StateMachine.Tests
                     cfg.AfterTransition
                         .From(States<VehicleStates>.Any).To(VehicleStates.Parked)
                         .Do(vehicle => vehicle._seatbeltOn = false);
+
+                    cfg.OnEvent("Park").Transition
+                        .From(VehicleStates.Idling, VehicleStates.FirstGear)
+                        .To(VehicleStates.Parked);
+
+                    cfg.OnEvent("Ignite")
+                        .Transition.From(VehicleStates.Stalled).ToSame()
+                        .Transition.From(VehicleStates.Parked).To(VehicleStates.Idling); 
+
+                    cfg.OnEvent("Idle")
+                        .Transition.From(VehicleStates.FirstGear).To(VehicleStates.Idling);
+   
+                    cfg.OnEvent("ShiftUp")
+                        .Transition.From(VehicleStates.Idling).To(VehicleStates.FirstGear)
+                        .Transition.From(VehicleStates.FirstGear).To(VehicleStates.SecondGear)
+                        .Transition.From(VehicleStates.SecondGear).To(VehicleStates.ThirdGear);
+
+                    cfg.OnEvent("ShiftDown")
+                        .Transition.From(VehicleStates.ThirdGear).To(VehicleStates.SecondGear)
+                        .Transition.From(VehicleStates.SecondGear).To(VehicleStates.FirstGear);
+       
+                    cfg.OnEvent("Crash").Transition
+                        .From(States<VehicleStates>.All - new[] {VehicleStates.Parked, VehicleStates.Stalled})
+                        .To(VehicleStates.Stalled)
+                        .Unless(x => x.AutoShopBusy);
                 });
+            }
+
+            public void Crash()
+            {
+                State.Fire("Crash");
             }
 
             private void PutOnSeatBelt()
@@ -49,6 +79,7 @@ namespace StateMachine.Tests
             }
 
             public StateMachine<VehicleStates> State { get; private set; }
+            public bool AutoShopBusy { get; set; }
         }
 
         private enum VehicleStates
@@ -56,7 +87,9 @@ namespace StateMachine.Tests
             Parked,
             Idling,
             FirstGear,
-            SecondGear
+            SecondGear,
+            ThirdGear,
+            Stalled
         }
     }
 }
